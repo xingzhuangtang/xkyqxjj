@@ -85,4 +85,4 @@ demo = gr.Interface(
 )
 
 # 启动 Gradio 应用
-demo.launch(server_name="0.0.0.0", share=True)  # 禁用 share 功能用 False
+demo.launch(server_name="0.0.0.0", server_port=8080, share=False)  # 禁用 share 功能用 False

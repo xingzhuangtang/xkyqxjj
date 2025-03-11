@@ -1,5 +1,5 @@
 # 忽略 .env 文件
-.env
+../.env
 
 # 忽略 PyCharm 的 .idea 目录
 .idea/
