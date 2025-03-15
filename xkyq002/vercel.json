@@ -7,6 +7,10 @@
       "config": {
         "buildCommand": "echo 'Building Python function'"
       }
+    },
+    {
+      "src": "public/index.html",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
@@ -16,7 +20,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "/index.html"
+      "dest": "/public/index.html"
     }
   ]
 }
