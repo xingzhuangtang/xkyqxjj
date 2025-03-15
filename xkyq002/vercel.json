@@ -1,4 +1,4 @@
- {
+{
   "version": 2,
   "builds": [
     {
@@ -13,11 +13,11 @@
   "routes": [
     {
       "src": "/api/python1",
-      "dest": "/api/python1"
+      "dest": "api/python1"
     },
     {
       "src": "/(.*)",
-      "dest": "/public/index.html"
+      "dest": "public/index.html"
     }
   ]
 }
