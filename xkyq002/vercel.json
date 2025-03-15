@@ -1,23 +1,24 @@
-{
-    "version": 2,
-    "builds": [
-        {
-            "src": "api/python1.py",
-            "use": "@vercel/python"
-        },
-        {
-            "src": "public/index.html",
-            "use": "@vercel/static"
-        }
-    ],
-    "routes": [
-        {
-            "src": "/api/python1",
-            "dest": "/api/python1"
-        },
-        {
-            "src": "/(.*)",
-            "dest": "/public/index.html"
-        }
-    ]
+ {
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/python1.py",
+      "use": "@vercel/python"
+    },
+    {
+      "src": "public/index.html",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/python1",
+      "dest": "/api/python1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/public/index.html"
+    }
+  ]
 }
+
