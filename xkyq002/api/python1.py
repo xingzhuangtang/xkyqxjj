@@ -1,7 +1,7 @@
 import json
 
 def handler(request):
-    print("Function called!")  # 调试日志
+    print("Function called!")
     input_text = request.args.get("input", "No input")
     return {
         "statusCode": 200,
