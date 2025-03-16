@@ -29,16 +29,22 @@
 
       try {
         output.innerText = "思考中...🤔";
+
+        // 调用后端 API
         const response = await fetch(`/api/python1?input=${encodeURIComponent(input)}`);
 
+        // 检查响应状态
         if (!response.ok) {
-          throw new Error(`HTTP 错误 ${response.status}`);
+          const errorData = await response.json();
+          throw new Error(errorData.error || `HTTP 错误 ${response.status}`);
         }
 
+        // 解析响应数据
         const data = await response.json();
         output.innerText = data.response || "回复内容解析失败";
       } catch (error) {
         output.innerText = `出错啦：${error.message}`;
+        console.error("API 请求失败:", error);
       }
     }
   </script>
