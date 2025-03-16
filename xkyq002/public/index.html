@@ -1,37 +1,25 @@
-<!DOCTYPE html>
-<html lang="zh">
-<head>
-  <meta charset="UTF-8">
-  <title>引擎喜剧家🤡</title>
-  <style>
-    body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
-    input { padding: 10px; width: 300px; }
-    button { padding: 10px 20px; margin-left: 10px; }
-    #output { margin-top: 20px; font-size: 18px; }
-  </style>
-</head>
-<body>
-  <h1>引擎喜剧家🤡</h1>
-  <p>输入你的烦恼，获取毒舌回复！</p>
-  <input id="input" type="text" placeholder="比如：我今天心情不好">
-  <button onclick="getJoke()">获取回复</button>
-  <div id="output"></div>
+// 修改为带错误处理的版本
+async function getJoke() {
+  const input = document.getElementById("input").value.trim();
+  const output = document.getElementById("output");
 
-  <script>
-    async function getJoke() {
-      const input = document.getElementById("input").value;
-      if (!input) {
-        document.getElementById("output").innerText = "请输入点什么吧，别让我干瞪眼！";
-        return;
-      }
+  if (!input) {
+    output.innerText = "请输入点什么吧，别让我干瞪眼！";
+    return;
+  }
 
-      // 调用后端 API
-      const response = await fetch(`/api/python1?input=${encodeURIComponent(input)}`);
-      const data = await response.json();
+  try {
+    output.innerText = "思考中...🤔";
 
-      // 显示结果
-      document.getElementById("output").innerText = data.response || "出错啦，请稍后再试！";
+    const response = await fetch(`/api/python1?input=${encodeURIComponent(input)}`);
+
+    if (!response.ok) {
+      throw new Error(`HTTP错误 ${response.status}`);
     }
-  </script>
-</body>
-</html>
+
+    const data = await response.json();
+    output.innerText = data.response || "回复内容解析失败";
+  } catch (error) {
+    output.innerText = `出错啦：${error.message}`;
+  }
+}
